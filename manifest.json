@@ -1,0 +1,19 @@
+{
+  "name": "الطوفان سوشيال",
+  "short_name": "الطوفان",
+  "description": "الطوفان سوشيال للدعاية والإعلان والتصميم",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#080b12",
+  "theme_color": "#080b12",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "altofan/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
