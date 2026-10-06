@@ -15,7 +15,10 @@
   <meta property="og:image" content="altofan/logo.png">
   <meta property="og:type" content="website">
 
-  <link rel="manifest" href="manifest.json">
+<link rel="manifest" href="manifest.json">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+<script src="auth.js"></script>
   <meta name="theme-color" content="#080b12">
 
   <style>
@@ -909,131 +912,7 @@
   📱 تثبيت الموقع
 </button>
 
-<script>
-
-  /* PRICE CALCULATOR */
-
-  function calculatePrice() {
-
-    const price =
-      Number(document.getElementById("service").value);
-
-    const quantity =
-      Math.max(
-        1,
-        Number(document.getElementById("quantity").value) || 1
-      );
-
-    const total = price * quantity;
-
-    document.getElementById("priceResult").textContent =
-      "السعر التقريبي: " + total.toLocaleString("ar-EG") + " جنيه";
-  }
-
-
-  /* SERVICE ASSISTANT */
-
-  function assistantAnswer(type) {
-
-    const message =
-      document.getElementById("assistantMessage");
-
-    const answers = {
-
-      logo:
-        "ممتاز 🎯 أنسب خدمة ليك هي Logo Design. هنساعدك تعمل لوجو احترافي مناسب لنشاطك.",
-
-      social:
-        "تمام 📱 أنسب اختيار ليك هو Social Media Design. نقدر نجهز تصميمات احترافية للبوستات والإعلانات.",
-
-      brand:
-        "اختيار ممتاز 💎 أنت محتاج Branding. نقدر نبني هوية بصرية متكاملة للبراند.",
-
-      ads:
-        "تمام 📢 نقدر نعمل لك تصميم إعلان احترافي مناسب للنشر على السوشيال ميديا."
-
-    };
-
-    message.innerHTML =
-      answers[type] +
-      "<br><br>" +
-      "<a href='https://wa.me/201206623499' target='_blank' style='color:#55aaff;font-weight:bold'>💬 تحدث معنا على WhatsApp</a>";
-  }
-
-
-  /* LANGUAGE */
-
-  function changeLanguage() {
-
-    const lang =
-      document.getElementById("languageSelect").value;
-
-    if (lang === "en") {
-
-      document.documentElement.lang = "en";
-      document.documentElement.dir = "ltr";
-
-      document.querySelector(".hero-text h1").innerHTML =
-        'Welcome to <span class="gradient">Altofan Social</span>';
-
-      document.querySelector(".hero-text p").textContent =
-        "We turn your ideas into powerful designs, professional branding and a strong social media presence.";
-
-    } else {
-
-      location.reload();
-
-    }
-  }
-
-
-  /* PWA INSTALL */
-
-  let deferredPrompt;
-
-  window.addEventListener("beforeinstallprompt", (event) => {
-
-    event.preventDefault();
-
-    deferredPrompt = event;
-
-    const installBtn =
-      document.getElementById("installBtn");
-
-    installBtn.style.display = "block";
-
-    installBtn.addEventListener("click", async () => {
-
-      if (!deferredPrompt) return;
-
-      deferredPrompt.prompt();
-
-      await deferredPrompt.userChoice;
-
-      deferredPrompt = null;
-
-      installBtn.style.display = "none";
-
-    });
-
-  });
-
-
-  /* SERVICE WORKER */
-
-  if ("serviceWorker" in navigator) {
-
-    window.addEventListener("load", () => {
-
-      navigator.serviceWorker.register("sw.js")
-        .then(() => console.log("PWA Service Worker Ready"))
-        .catch(error => console.log("SW Error:", error));
-
-    });
-
-  }
-
-</script>
 
 </body>
 </html>
+
