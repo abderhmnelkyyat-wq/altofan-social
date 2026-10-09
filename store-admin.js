@@ -33,13 +33,19 @@
     isOwner = false;
 
     if (currentUser) {
-      const { data } = await supabaseClient
+      const { data, error } = await supabaseClient
         .from("profiles")
         .select("role")
         .eq("id", currentUser.id)
         .maybeSingle();
 
-      isOwner = ["owner", "admin"].includes(data?.role);
+      console.log("ALTOFAN owner check:", {
+        userId: currentUser.id,
+        role: data?.role,
+        error: error?.message
+      });
+
+      isOwner = !error && ["owner", "admin"].includes(data?.role);
     }
 
     // زر الدخول يظل ظاهرًا، لكن صلاحيات الإدارة للمالك فقط
