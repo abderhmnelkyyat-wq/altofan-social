@@ -42,10 +42,8 @@
       isOwner = ["owner", "admin"].includes(data?.role);
     }
 
-    toggle.hidden = !isOwner;
-    if (!isOwner && !panel.hidden) {
-      panel.hidden = true;
-    }
+    // زر الدخول يظل ظاهرًا، لكن صلاحيات الإدارة للمالك فقط
+    toggle.hidden = false;
   }
 
   function renderProducts() {
