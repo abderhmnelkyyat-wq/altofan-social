@@ -39,13 +39,17 @@
         .eq("id", currentUser.id)
         .maybeSingle();
 
-      console.log("ALTOFAN owner check:", {
+      const debugInfo = {
         userId: currentUser.id,
-        role: data?.role,
-        error: error?.message
-      });
+        role: data?.role ?? "غير موجود",
+        error: error?.message ?? "لا يوجد خطأ"
+      };
+
+      console.log("ALTOFAN owner check:", debugInfo);
 
       isOwner = !error && ["owner", "admin"].includes(data?.role);
+
+      window.altofanOwnerDebug = debugInfo;
     }
 
     // زر الدخول يظل ظاهرًا، لكن صلاحيات الإدارة للمالك فقط
@@ -211,7 +215,7 @@
       if (!isOwner) {
         await supabaseClient.auth.signOut();
         currentUser = null;
-        showLogin("هذا الحساب ليس لديه صلاحية إدارة المتجر.");
+        showLogin("فشل فحص الصلاحية: " + JSON.stringify(window.altofanOwnerDebug || {}));
         return;
       }
 
