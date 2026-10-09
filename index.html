@@ -565,6 +565,62 @@
       }
     }
   </style>
+
+<style id="altofan-store-css">
+#altofan-store {
+  direction: rtl;
+  padding: 65px 18px;
+  margin: 35px auto;
+  max-width: 1200px;
+  color: #f5f7ff;
+  font-family: inherit;
+}
+#altofan-store * { box-sizing: border-box; }
+#altofan-store .store-head { text-align:center; margin-bottom:32px; }
+#altofan-store .store-badge {
+  display:inline-block; padding:7px 14px; border-radius:30px;
+  border:1px solid #5b68ff; color:#b9c1ff; font-size:13px;
+}
+#altofan-store h2 { font-size:clamp(28px,5vw,42px); margin:18px 0 10px; }
+#altofan-store .store-desc { color:#aeb5c8; line-height:1.9; }
+#altofan-store .store-grid {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:18px; margin-top:30px;
+}
+#altofan-store .store-card {
+  background:linear-gradient(145deg,#171c2b,#0d111c);
+  border:1px solid #292f45; border-radius:20px; padding:24px;
+  display:flex; flex-direction:column; min-height:280px;
+  transition:transform .2s,border-color .2s;
+}
+#altofan-store .store-card:hover { transform:translateY(-4px); border-color:#6975ff; }
+#altofan-store .store-icon { font-size:34px; margin-bottom:15px; }
+#altofan-store .store-card h3 { margin:0 0 12px; font-size:21px; }
+#altofan-store .store-card p { color:#aeb5c8; line-height:1.8; flex:1; }
+#altofan-store .store-price { font-size:25px; font-weight:800; margin:12px 0 18px; }
+#altofan-store .store-price small { font-size:13px; color:#aeb5c8; }
+#altofan-store .store-btn {
+  display:block; width:100%; text-align:center; text-decoration:none;
+  padding:12px 15px; border-radius:12px; background:#5965f2;
+  color:white!important; font-weight:700; border:0; cursor:pointer;
+}
+#altofan-store .store-btn:hover { background:#707aff; }
+#altofan-store .store-note {
+  margin-top:24px; text-align:center; color:#aeb5c8;
+  font-size:13px; line-height:1.8;
+}
+#altofan-store-link {
+  position:fixed; bottom:18px; left:18px; z-index:999;
+  background:#5965f2; color:#fff!important; padding:12px 17px;
+  border-radius:30px; text-decoration:none; font-weight:800;
+  box-shadow:0 6px 25px #0007;
+}
+@media(max-width:480px) {
+  #altofan-store { padding:45px 14px; }
+  #altofan-store .store-card { min-height:250px; }
+}
+</style>
+
 </head>
 
 <body>
@@ -912,6 +968,74 @@
   📱 تثبيت الموقع
 </button>
 
+
+
+<!-- ALTOFAN_STORE_SECTION -->
+<section id="altofan-store">
+  <div class="store-head">
+    <span class="store-badge">ALTOFAN STORE</span>
+    <h2>اختار خدمتك وابدأ مشروعك 🚀</h2>
+    <p class="store-desc">
+      حلول تصميم وهوية بصرية تساعدك تبني براند مميز وتظهر باحترافية.
+    </p>
+  </div>
+
+  <div class="store-grid">
+    <article class="store-card">
+      <div class="store-icon">🎨</div>
+      <h3>Starter Pack</h3>
+      <p>باقة بداية للمشروعات الصغيرة، تشمل تصميمات أساسية للسوشيال ميديا.</p>
+      <div class="store-price">99 <small>جنيه مصري</small></div>
+      <a class="store-btn" href="#contact"
+         onclick="return altofanStoreOrder('Starter Pack - 99 EGP')">اطلب الباقة</a>
+    </article>
+
+    <article class="store-card">
+      <div class="store-icon">📱</div>
+      <h3>Business Pack</h3>
+      <p>باقة للمشروعات النشطة، تساعدك في تجهيز محتوى بصري أكثر انتظامًا.</p>
+      <div class="store-price">199 <small>جنيه مصري</small></div>
+      <a class="store-btn" href="#contact"
+         onclick="return altofanStoreOrder('Business Pack - 199 EGP')">اطلب الباقة</a>
+    </article>
+
+    <article class="store-card">
+      <div class="store-icon">👑</div>
+      <h3>Premium Brand</h3>
+      <p>باقة هوية بصرية مميزة للمشروعات التي تريد مظهرًا متناسقًا واحترافيًا.</p>
+      <div class="store-price">499 <small>جنيه مصري</small></div>
+      <a class="store-btn" href="#contact"
+         onclick="return altofanStoreOrder('Premium Brand - 499 EGP')">اطلب الباقة</a>
+    </article>
+  </div>
+
+  <p class="store-note">
+    الأسعار مبدئية وقابلة للتعديل. الطلب لا يُعد مدفوعًا أو مؤكدًا إلا بعد الاتفاق.
+  </p>
+</section>
+
+<a id="altofan-store-link" href="#altofan-store">🛍️ المتجر</a>
+
+<script>
+function altofanStoreOrder(product) {
+  const message = "مرحبًا الطوفان سوشيال، أريد الاستفسار عن: " + product;
+  const contact = document.querySelector(
+    '#contact a[href*="wa.me"], a[href*="wa.me"]'
+  );
+  if (contact) {
+    const phone = contact.href.match(/wa\.me\/(\d+)/);
+    if (phone) {
+      window.open(
+        "https://wa.me/" + phone[1] + "?text=" + encodeURIComponent(message),
+        "_blank"
+      );
+      return false;
+    }
+  }
+  alert("تم اختيار " + product + ". تواصل معنا من قسم الاتصال لإتمام الطلب.");
+  return false;
+}
+</script>
 
 </body>
 </html>
