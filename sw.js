@@ -1,4 +1,4 @@
-const CACHE_NAME = "altofan-v1";
+const CACHE_NAME = "altofan-v2";
 
 const FILES_TO_CACHE = [
   "./",
