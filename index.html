@@ -666,6 +666,27 @@ a.whatsapp svg {
 }
 </style>
 
+
+<style id="altofan-store-admin-css">
+#altofan-admin-toggle { display:block; margin:20px auto; cursor:pointer; }
+#altofan-admin-toggle[hidden],#altofan-admin-panel[hidden] { display:none!important; }
+#altofan-admin-panel { max-width:850px; margin:24px auto; padding:24px;
+border:1px solid #343b55; border-radius:18px; background:#101522; color:#f5f7ff; }
+.altofan-admin-form { display:grid; gap:14px; margin:18px 0; }
+.altofan-admin-form label { display:grid; gap:7px; }
+.altofan-admin-form input,.altofan-admin-form textarea {
+width:100%; box-sizing:border-box; padding:12px; border:1px solid #414966;
+border-radius:10px; background:#080c15; color:white; font:inherit; }
+.altofan-admin-form button,.altofan-admin-actions button,
+#altofan-admin-logout,.altofan-product-admin button {
+padding:10px 14px; border:1px solid #5967ff; border-radius:10px;
+background:#303dce; color:white; cursor:pointer; font:inherit; }
+.altofan-admin-check { display:flex!important; align-items:center; gap:10px; }
+.altofan-admin-check input { width:auto; }
+.altofan-admin-actions,.altofan-product-admin { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+.altofan-admin-message { color:#b8c3ff; overflow-wrap:anywhere; }
+</style>
+
 </head>
 
 <body>
@@ -1032,7 +1053,12 @@ a.whatsapp svg {
     </p>
   </div>
 
-  <div class="store-grid">
+  <button id="altofan-admin-toggle" class="store-btn"
+type="button" hidden>👑 إدارة المتجر</button>
+<section id="altofan-admin-panel" hidden aria-label="لوحة إدارة المتجر">
+<div id="altofan-admin-body"></div>
+</section>
+<div id="altofan-store-grid" class="store-grid">
     <article class="store-card">
       <div class="store-icon">🎨</div>
       <h3>Starter Pack</h3>
@@ -1089,6 +1115,7 @@ function altofanStoreOrder(product) {
 }
 </script>
 
+<script src="store-admin.js" defer></script>
 </body>
 </html>
 
